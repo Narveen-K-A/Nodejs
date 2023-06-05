@@ -70,7 +70,27 @@ function getSubNum(x, y) {
     return customPromise
 }
 
-getSumNum(x, y).then(data => {
+Promise.all([getSumNum(x, y), getMulNum(x, y), getDivNum(x, y), getSubNum(x, y)]).then((values) => {
+    console.log(values);
+    var sum = values.reduce(function(a, b) { 
+        return a + b; 
+    }, 0);
+    console.log(sum)
+})
+.catch((error) => {
+    console.error(error.message);
+});
+
+/* let sum = 0;
+for (let i = 0; i < values.length; i++) {
+    sum += values[i];
+} */
+
+/* Promise.all([promise1, promise2, promise3]).then((values) => {
+    console.log(values);
+}); */
+
+/* getSumNum(x, y).then(data => {
     result1 = data;
     console.log(result1)
     getMulNum(x, y).then(data => {
@@ -98,5 +118,5 @@ getSumNum(x, y).then(data => {
 })
 .catch(err => {
     console.log(err)
-})
+}) */
 
