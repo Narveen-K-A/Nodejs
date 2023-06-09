@@ -1,24 +1,18 @@
 const express = require('express')
 const bodyparser = require('body-parser');
-
 const app = express();
 const port = 3000;
-
 let books = [];
-
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
 app.post('/book', (req, res) => {
     const book = req.body;
-
     console.log("ID: ", book.id);
     console.log("Name: ", book.name);
     console.log("Author: ", book.author);
-
     console.log(book);
     books.push(book);
-
     res.send('Book is added to the database');
 });
 
@@ -27,7 +21,6 @@ app.get('/books', (req, res) => {
 });
 
 app.get('/book/:id', (req, res) => {
-
     const id = Number(req.params.id);
     console.log(id)
     for (let book of books) {
@@ -36,22 +29,32 @@ app.get('/book/:id', (req, res) => {
             return;
         }
     }
-
     res.status(404).send('Book not found');
 });
 
-app.delete('/book/:id', (req, res) => {
-
+app.put('/book/:id', (req, res) => {
     const id = Number(req.params.id);
+    const newBook = req.body;
+    for (let i = 0; i < books.length; i++) {
+        let book = books[i]
+        if (book.id === id) {
+            books[i] = newBook;
+            res.send('Book is edited');
+        }
+        res.status(404).send('Book not found');
+    } 
+});
 
+app.delete('/book/:id', (req, res) => {
+    const id = Number(req.params.id);
     books = books.filter(i => {
         if (i.id !== id) {
             return true;
         }
+        res.send('Book is deleted');
         return false;
     });
-
-    res.send('Book is deleted');
+    res.status(404).send('Book not found');
 });
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
