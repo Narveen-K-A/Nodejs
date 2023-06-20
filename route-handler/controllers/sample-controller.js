@@ -43,7 +43,7 @@ exports.book_update = asyncHandler(async (req, res, next) => {
   for(let i=0 ; i<books.length ; i++){
     let book =books[i];
     if(book.Id === id){
-      books[i] =newbook;
+      books[i] = newbook;
     }
   }
   res.send("Book is edited");
