@@ -33,10 +33,12 @@ app.get("/user/validateToken", (req, res) => {
 		const verified = jwt.verify(token, jwtSecretKey);
 		if(verified){
 			return res.send("Successfully Verified");
-		}else{
+		}
+		else{
 			return res.status(401).send(error);
 		}
-	} catch (error) {
+	} 
+	catch (error) {
 		return res.status(401).send(error);
 	}
 });
