@@ -6,8 +6,6 @@ const jwtKey = "my_secret_key";
 
 exports.user_create = asyncHandler(async(req, res, next) =>{
 	const user = req.body;
-	// console.log("Username: ", user.username);
-	// console.log("Password: ", user.password);
 	token.userdata.push(user);
 	let isPresent = false;
 	let isPresentIndex = null;
