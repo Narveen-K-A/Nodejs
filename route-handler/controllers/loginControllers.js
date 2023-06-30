@@ -38,12 +38,6 @@ exports.user_create = asyncHandler(async(req, res, next) =>{
 	}
 });
 
-exports.user_list =asyncHandler(async(req, res, next)=>{
-	res.json({
-		token: token,
-	});
-})
-
 exports.user_welcome =asyncHandler(async(req,res,next)=>{
 	jwt.verify(req.tokens, jwtKey, (err, authdata)=>{
 		if(err){
