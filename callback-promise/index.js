@@ -24,7 +24,7 @@ function getSumNum(x, y) {
         else {
             reject(new Error("Invalid data!"))
         }
-        })
+    })
     return customPromise
 }
 
@@ -38,7 +38,7 @@ function getMulNum(x, y) {
         else {
             reject(new Error("Invalid data!"))
         }
-        })
+    })
     return customPromise
 }
 
@@ -52,7 +52,7 @@ function getDivNum(x, y) {
         else {
             reject(new Error("Invalid data!"))
         }
-        })
+    })
     return customPromise
 }
 
@@ -66,7 +66,7 @@ function getSubNum(x, y) {
         else {
             reject(new Error("Invalid data!"))
         }
-        })
+    })
     return customPromise
 }
 
